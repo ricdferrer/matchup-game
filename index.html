@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+
     <link rel="stylesheet" href="css/app.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -26,24 +28,23 @@
                 <li><i class="fa fa-star checked"></i></li>
             </ul>
 
-            <span class="moves"></span> Moves
-           
+            <span class="moves"></span>
+            <span class="moveText">Move</span>
+
 
             <div class="restart">
                 <i class="fas fa-sync-alt"></i>
             </div>
-           
-            
+
+            <div class="clock">
+                <time>Time: <span class="timer">0mins 0secs</span></time>
+            </div>
+
+
         </section>
 
         <ul class="deck">
-            <li class="card match">
-                <i class="fas"></i>
-            </li>
             <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card match">
                 <i class="fas"></i>
             </li>
             <li class="card">
@@ -52,10 +53,10 @@
             <li class="card">
                 <i class="fas"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fas"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fas"></i>
             </li>
             <li class="card">
@@ -73,7 +74,13 @@
             <li class="card">
                 <i class="fas"></i>
             </li>
-            <li class="card open">
+            <li class="card">
+                <i class="fas"></i>
+            </li>
+            <li class="card">
+                <i class="fas"></i>
+            </li>
+            <li class="card">
                 <i class="fas"></i>
             </li>
             <li class="card">
@@ -87,9 +94,27 @@
             </li>
         </ul>
     </div>
+    
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Congratulations 🎉</h2>
+            <a class="close" href=#>×</a>
+            <div class="content-1">
+                Congratulations you're a winner 🎉🎉
+            </div>
+            <div class="content-2">
+                <p>You made <span id=finalMove> </span> moves </p>
+                <p>in <span id=totalTime> </span> </p>
+                <p>Rating: <span id=starRating></span></p>
+            </div>
+            <button id="play-again" onclick="playAgain()">
+                Play again 😄</a>
+            </button>
+        </div>
+    </div>
 
     <script src="js/app.js"></script>
-    
+
 </body>
 
 </html>
