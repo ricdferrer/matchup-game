@@ -209,7 +209,7 @@ function congratulations(){
 
         //showing move, rating, time on modal
         $("#finalMove").html(`${moves}`);
-        for (let i = 0; i < starRating.length;; i++) {
+        for (let i = 0; i < starRating.length; i++) {
             $("#starRating").append(starRating);
         }
         $("#totalTime").html(`${finalTime}`);
