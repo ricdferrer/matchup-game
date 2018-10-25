@@ -1,20 +1,18 @@
-# Memory Game Project
+# Match Up Game Project
 
-## Table of Contents
+## What is the Memory Game
+MatchUp is a card game.
+![snippet](img/snippet.png)
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## Challenge
+Match cards with less moves.
+
+## How to Play
+Cards are laid out in a grid face down, and players take turns flipping pairs of cards over. If the two cards match, both cards are turned up. If they do not match, the cards are turned back over. The game ends when the last pair has been picked up. 
 
 ## Instructions
-
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
-
-To get started, open `js/app.js` and start building out the app's functionality
-
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+* Click on a card.
+* Player chooses two cards and turns them face up.
+* If they are of the same rank then the player keep up the cards faced up.
+* If they are not of the same rank, they are turned face down again.
+* Match cards properly with less moves and in faster time

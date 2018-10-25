@@ -2,15 +2,14 @@
  * Create a list that holds all of your cards
  */
 
-//Cartas disponíveis.
+
 let cards = ["fa-broom", "fa-ghost", "fa-gamepad", "fa-hippo", "fa-bolt", "fa-crow", "fa-leaf", "fa-frog"];
 let moves = 0;
 
-// Cartas comparadas para dar Match
 let comparedCards = [];
-let checkMatch = []
+let checkMatch = [];
 
-let modal = document.getElementById("popup1")
+let modal = document.getElementById("popup1");
 let closeicon = document.querySelector(".close");
 let matchedCard = document.getElementsByClassName("match");
 
@@ -37,7 +36,9 @@ function shuffle(array) {
     return array;
 }
 
-//Cria o array para distribuir as cartas
+/**
+* @description Create an array with all.
+**/
 const handOutcard = function (self) {
     let element = $(".deck > li > .fas");
     let newDeck = shuffle(self.reduce(function (res, current, index, array) {
@@ -47,12 +48,17 @@ const handOutcard = function (self) {
     for (let i = 0; i < newDeck.length; i++) {
         element[i].classList.toggle(newDeck[i]);
     }
-}
+};
 
-//Distribuir todas as cartas aleatóriamente.
+/**
+* @description Distribute all cards
+* @param {array} cards - Array of cards.
+**/
 handOutcard(cards);
 
-//Limpar todos os dados para iniciar/reiniciar o jogo
+/**
+* @description Clear all data to start/restart the game
+**/
 const startGame = function () {
     let cardList = $(".card");
     let starList = $("i.fa-star");
@@ -64,19 +70,22 @@ const startGame = function () {
     starList.addClass("checked");
     
     moves = 0;
-    $(".moves").html(`${moves}`)
+    $(".moves").html(`${moves}`);
     
     second = 0;
     minute = 0; 
     hour = 0;
     $(".timer").html("0 mins 0 secs");
     clearInterval(interval);
-}
+};
 
-// Inicia o jogo ao iniciar a página.
+// TODO: start the game by opening the page
 window.onload = startGame();
 
-//Contar os movimentos
+
+/**
+* @description Count movements and start the timer
+**/
 function countMoves() {
     moves++;
     $(".moves").html(`${moves}`);
@@ -89,11 +98,11 @@ function countMoves() {
     }
 
     if(moves >= 2) {
-        $('.moveText').html(' Moves');
+        $(".moveText").html(" Moves");
     }
 }
 
-// Cronometro
+// TODO: start timer
 var second = 0, minute = 0; hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
@@ -112,7 +121,9 @@ function startTimer(){
     },1000);
 }
 
-// Valida se as cartas são iguais
+/**
+* @description Check if cards are equal or different
+**/
 function checkCards() {
     comparedCards.push(this);
     checkMatch.push(this.children);
@@ -134,14 +145,16 @@ function checkCards() {
     }
 }
 
-//Mostrar as cartas
-var displayCard = function () {
+// TODO: flip cards
+const displayCard = function () {
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
-}
+};
 
-//Verifica se as cartas são iguais.
+/**
+* @description Apply attribute on matched cards
+**/
 function matched() {
     comparedCards[0].classList.add("match", "disabled");
     comparedCards[1].classList.add("match", "disabled");
@@ -151,7 +164,9 @@ function matched() {
     countMoves()
 }
 
-//Verifica se as cartas são diferentes.
+/**
+* @description Apply attribute on unmatched cards
+**/
 function unmatched() {
     comparedCards[0].classList.add("unmatched");
     comparedCards[1].classList.add("unmatched");
@@ -165,24 +180,30 @@ function unmatched() {
     countMoves();
 }
 
-//Desativa interação durante animação
+/**
+* @description Disables interaction with cards after picking two cards
+**/
 function disable() {
-    $('.card').addClass('disabled');
+    $(".card").addClass("disabled");
 }
 
-//Reativa interação durante animação
+/**
+* @description Enable interaction again
+**/
 function enable() {
-    let allCards = $('.card');
-    let allMatched = $('.match');
+    let allCards = $(".card");
+    let allMatched = $(".match");
     for (let i = 0; i < allCards.length; i++) {
-        if ($.inArray('match', allCards[i].classList) === -1) {
-            allCards.removeClass('disabled');
-            allMatched.addClass('disabled');
+        if ($.inArray("match", allCards[i].classList) === -1) {
+            allCards.removeClass("disabled");
+            allMatched.addClass("disabled");
         }
     }
 }
 
-//Rate Stars
+/**
+* @description Rate stars function
+**/
 function rateStars() {
     let a = $(".stars > li > i");
     if (moves >= 13 && moves < 15) {
@@ -196,6 +217,9 @@ function rateStars() {
     }
 }
 
+/**
+* @description Call congratulations modal
+**/
 function congratulations(){
     if (matchedCard.length === 16){
         clearInterval(interval);
@@ -205,7 +229,7 @@ function congratulations(){
         modal.classList.add("show");
 
         // declare star rating variable
-        var starRating = $('ul.stars > li > i.checked');
+        var starRating = $("ul.stars > li > i.checked");
 
         //showing move, rating, time on modal
         $("#finalMove").html(`${moves}`);
@@ -216,9 +240,12 @@ function congratulations(){
 
         //closeicon on modal
         closeModal();
-    };
+    }
 }
 
+/**
+* @description close button on modal screen
+**/
 function closeModal(){
     closeicon.addEventListener("click", function(e){
         modal.classList.remove("show");
@@ -226,14 +253,18 @@ function closeModal(){
     });
 }
 
-// @desciption for user to play Again 
+/**
+* @description user play again button
+**/
 function playAgain(){
     modal.classList.remove("show");
     startGame();
 }
 
 
-//Adicionar interação a todas as cartas
+/**
+* @description add listener on cards
+**/
 function setCardsListener() {
     let cardDeck = $(".card")
     for (let i = 0; i < cardDeck.length; i++) {
@@ -243,11 +274,11 @@ function setCardsListener() {
     }
 }
 
-//Adiciona os event listeners em todas as cartas.
+// TODO: setting all listeners
 setCardsListener();
 
 
-//Botão de Reiniciar o jogo
+// TODO: restart game button
 $(".restart").click(function (event) {
     startGame();
 });
