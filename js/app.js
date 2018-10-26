@@ -1,8 +1,6 @@
 /*
  * Create a list that holds all of your cards
  */
-
-
 let cards = ["fa-broom", "fa-ghost", "fa-gamepad", "fa-hippo", "fa-bolt", "fa-crow", "fa-leaf", "fa-frog"];
 let moves = 0;
 
@@ -37,46 +35,50 @@ function shuffle(array) {
 }
 
 /**
-* @description Create an array with all.
-**/
-const handOutcard = function (self) {
-    let element = $(".deck > li > .fas");
-    let newDeck = shuffle(self.reduce(function (res, current, index, array) {
-        return res.concat([current, current]);
-    }, []));
-
-    for (let i = 0; i < newDeck.length; i++) {
-        element[i].classList.toggle(newDeck[i]);
-    }
+ * @description Create an array with all.
+ **/
+const handOutCard = function (foo) {
+    foo.reduce(function (res, current, index, array) {
+        newCardSet = res.concat([current, current])
+        return newCardSet;
+    }, []);
+    return shuffle(newCardSet);
 };
 
 /**
-* @description Distribute all cards
-* @param {array} cards - Array of cards.
-**/
-handOutcard(cards);
+ * @description Distribute all cards created by handOutCard
+ * @param {array} cards - Array of cards.
+ **/
+const distributeCards = function() {
+    var allCards = handOutCard(cards);
+    let element = $(".deck > li > .fas");
+    element.attr('class', 'fas');
+    for (let i = 0; i < allCards.length; i++) {
+        element[i].classList.toggle(allCards[i]);
+    }
+}
+
 
 /**
-* @description Clear all data to start/restart the game
-**/
+ * @description Clear all data to start/restart the game
+ **/
 const startGame = function () {
     let cardList = $(".card");
     let starList = $("i.fa-star");
-
+    distributeCards()
     cardList.removeClass("match");
     cardList.removeClass("open");
     cardList.removeClass("show");
     cardList.removeClass("disabled");
     starList.addClass("checked");
-    
     moves = 0;
     $(".moves").html(`${moves}`);
-    
     second = 0;
-    minute = 0; 
+    minute = 0;
     hour = 0;
     $(".timer").html("0 mins 0 secs");
     clearInterval(interval);
+    
 };
 
 // TODO: start the game by opening the page
@@ -84,46 +86,49 @@ window.onload = startGame();
 
 
 /**
-* @description Count movements and start the timer
-**/
+ * @description Count movements and start the timer
+ **/
 function countMoves() {
     moves++;
     $(".moves").html(`${moves}`);
     rateStars();
-    if(moves == 1){
+    if (moves == 1) {
         second = 0;
-        minute = 0; 
+        minute = 0;
         hour = 0;
         startTimer();
     }
 
-    if(moves >= 2) {
+    if (moves >= 2) {
         $(".moveText").html(" Moves");
     }
 }
 
 // TODO: start timer
-var second = 0, minute = 0; hour = 0;
+var second = 0,
+    minute = 0;
+hour = 0;
 var timer = document.querySelector(".timer");
 var interval;
-function startTimer(){
-    interval = setInterval(function(){
-        timer.innerHTML = minute+"mins "+second+"secs";
+
+function startTimer() {
+    interval = setInterval(function () {
+        timer.innerHTML = minute + "mins " + second + "secs";
         second++;
-        if(second == 60){
+        if (second == 60) {
             minute++;
-            second=0;
+            second = 0;
         }
-        if(minute == 60){
+        if (minute == 60) {
             hour++;
             minute = 0;
         }
-    },1000);
+    }, 1000);
 }
 
 /**
-* @description Check if cards are equal or different
-**/
+ * @description Check if cards are equal or different
+ **/
 function checkCards() {
     comparedCards.push(this);
     checkMatch.push(this.children);
@@ -139,7 +144,7 @@ function checkCards() {
             matched();
             firtPick = "";
             secondPick = "";
-            
+
             checkMatch = [];
         }
     }
@@ -153,8 +158,8 @@ const displayCard = function () {
 };
 
 /**
-* @description Apply attribute on matched cards
-**/
+ * @description Apply attribute on matched cards
+ **/
 function matched() {
     comparedCards[0].classList.add("match", "disabled");
     comparedCards[1].classList.add("match", "disabled");
@@ -165,8 +170,8 @@ function matched() {
 }
 
 /**
-* @description Apply attribute on unmatched cards
-**/
+ * @description Apply attribute on unmatched cards
+ **/
 function unmatched() {
     comparedCards[0].classList.add("unmatched");
     comparedCards[1].classList.add("unmatched");
@@ -181,15 +186,15 @@ function unmatched() {
 }
 
 /**
-* @description Disables interaction with cards after picking two cards
-**/
+ * @description Disables interaction with cards after picking two cards
+ **/
 function disable() {
     $(".card").addClass("disabled");
 }
 
 /**
-* @description Enable interaction again
-**/
+ * @description Enable interaction again
+ **/
 function enable() {
     let allCards = $(".card");
     let allMatched = $(".match");
@@ -202,8 +207,8 @@ function enable() {
 }
 
 /**
-* @description Rate stars function
-**/
+ * @description Rate stars function
+ **/
 function rateStars() {
     let a = $(".stars > li > i");
     if (moves >= 13 && moves < 15) {
@@ -218,10 +223,10 @@ function rateStars() {
 }
 
 /**
-* @description Call congratulations modal
-**/
-function congratulations(){
-    if (matchedCard.length === 16){
+ * @description Call congratulations modal
+ **/
+function congratulations() {
+    if (matchedCard.length === 16) {
         clearInterval(interval);
         finalTime = timer.innerHTML;
 
@@ -244,27 +249,27 @@ function congratulations(){
 }
 
 /**
-* @description close button on modal screen
-**/
-function closeModal(){
-    closeicon.addEventListener("click", function(e){
+ * @description close button on modal screen
+ **/
+function closeModal() {
+    closeicon.addEventListener("click", function (e) {
         modal.classList.remove("show");
         startGame();
     });
 }
 
 /**
-* @description user play again button
-**/
-function playAgain(){
+ * @description user play again button
+ **/
+function playAgain() {
     modal.classList.remove("show");
     startGame();
 }
 
 
 /**
-* @description add listener on cards
-**/
+ * @description add listener on cards
+ **/
 function setCardsListener() {
     let cardDeck = $(".card")
     for (let i = 0; i < cardDeck.length; i++) {
@@ -293,5 +298,3 @@ $(".restart").click(function (event) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
-
- 

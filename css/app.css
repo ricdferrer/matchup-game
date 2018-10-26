@@ -1,112 +1,103 @@
 html {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+	box-sizing: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png');
-    /* Background pattern from Subtle Patterns */
-    font-family: 'Fredericka the Great', cursive;
-    font-size: 25px;
-    
+	background: #ffffff url('../img/geometry2.png');
+	font-family: 'Fredericka the Great', cursive;
+	font-size: 16px;
 }
 
-
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
 h1 {
-    font-family: 'Fredericka the Great', cursive;
+	font-family: 'Fredericka the Great', cursive;
     font-weight: 400;
-    font-size: 50px;
 }
 
 /*
  * Styles for the deck of cards
  */
-
 .deck {
-    width: 660px;
-    min-height: 680px;
-    background: linear-gradient(160deg, #7d7f94 0%, #99e6e2 100%);
-    padding: 32px;
-    border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
+	width: 85%;
+	background: linear-gradient(160deg, #7d7f94 0%, #99e6e2 100%);
+	padding: 1rem;
+	border-radius: 4px;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0 0 3em;
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
-    background: #2e3d49;
-    font-size: 0;
-    color: #ffffff;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	height: 3.7rem;
+	width: 3.7rem;
+	margin: 0.2rem 0.2rem;
+	background: #2e3d49;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
-    transform: rotateY(0);
+	transform: rotateY(0);
     background: #53b8d4;
-    cursor: default;
-
+	cursor: default;
 }
 
 .deck .card.show {
-    font-size: 33px;
+	font-size: 33px;
 }
 
 .deck .card.match {
-    cursor: default;
+	cursor: default;
     background: #35cfc2;
     font-size: 33px;
 }
 
 .deck .card.unmatched {
-    cursor: default;
+	cursor: default;
     background: #ff7d83;
     font-size: 33px;
 }
 
 .deck .card.disabled {
-    pointer-events: none;
-    opacity: 0.9;
+	pointer-events: none;
+	opacity: 0.9;
 }
 
 
 /*
  * Styles for the Score Panel
  */
-
-
 .score-panel {
     text-align: left;
-    width: 345px;
     margin-bottom: 10px;
 }
 
@@ -125,24 +116,22 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    padding-left: 50px;
+    
 }
 
 .checked {
     color: orange;
 }
 
-.half-checked {
-    background: -webkit-linear-gradient(right, black 50%, orange 50%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: initial;
+.timer {
+	display: inline-block;
+	margin: 0 1rem;
 }
 
 /*
  * Styles for congratulations modal
  */
-
-
  .overlay {
 	position: fixed;
 	top: 0;

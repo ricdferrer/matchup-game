@@ -2,8 +2,11 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>MatchUp  Game</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>MatchUp Game</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
@@ -15,103 +18,103 @@
 </head>
 
 <body>
+   
+        <div class="container">
+            <header>
+                <h1>MatchUp Game</h1>
+            </header>
+            <section class="score-panel">
+                <ul class="stars">
+                    <li><i class="fa fa-star checked"></i></li>
+                    <li><i class="fa fa-star checked"></i></li>
+                    <li><i class="fa fa-star checked"></i></li>
+                    <li><i class="fa fa-star checked"></i></li>
+                </ul>
 
-    <div class="container">
-        <header>
-            <h1>MatchUp Game</h1>
-        </header>
-        <section class="score-panel">
-            <ul class="stars">
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
-                <li><i class="fa fa-star checked"></i></li>
+                <span class="moves"></span>
+                <span class="moveText">Move</span>
+
+
+                <div class="restart">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+
+                <div class="clock">
+                    <time>Time: <span class="timer">0mins 0secs</span></time>
+                </div>
+
+
+            </section>
+
+            <ul class="deck">
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
+                <li class="card">
+                    <i class="fas"></i>
+                </li>
             </ul>
-
-            <span class="moves"></span>
-            <span class="moveText">Move</span>
-
-
-            <div class="restart">
-                <i class="fas fa-sync-alt"></i>
-            </div>
-
-            <div class="clock">
-                <time>Time: <span class="timer">0mins 0secs</span></time>
-            </div>
-
-
-        </section>
-
-        <ul class="deck">
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-            <li class="card">
-                <i class="fas"></i>
-            </li>
-        </ul>
-    </div>
-    
-    <div id="popup1" class="overlay">
-        <div class="popup">
-            <a class="close" href=#>×</a>
-            <div class="content-1">
-                <h1>🎉 Congratulations you're a winner 🎉</h1>
-            </div>
-            <div class="content-2">
-                <p>You made <span id=finalMove> </span> moves </p>
-                <p>in <span id=totalTime> </span> </p>
-                <p>Rating: <span id=starRating></span></p>
-            </div>
-            <button id="play-again" onclick="playAgain()">
-                Play again 😄</a>
-            </button>
         </div>
-    </div>
 
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <a class="close" href=#>×</a>
+                <div class="content-1">
+                    <h1>🎉 Congratulations you're a winner 🎉</h1>
+                </div>
+                <div class="content-2">
+                    <p>You made <span id=finalMove> </span> moves </p>
+                    <p>in <span id=totalTime> </span> </p>
+                    <p>Rating: <span id=starRating></span></p>
+                </div>
+                <button id="play-again" onclick="playAgain()">
+                    Play again 😄</a>
+                </button>
+            </div>
+        </div>
+    
     <script src="js/app.js"></script>
 
 </body>
